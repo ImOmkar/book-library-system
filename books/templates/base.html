@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Library Management System</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="bg-gray-100">
+        <!-- Navbar -->
+        <nav class="bg-white shadow mb-6">
+            <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+                <a href="/books/" class="font-bold text-lg text-gray-700">
+                    📚 Library Management System
+                </a>
+                <div class="space-x-4">
+                    {% if user.is_authenticated %}
+                        <span class="text-gray-600">
+                            Hello {{ user.username }}
+                        </span>
+                        <form action="/logout/" method="post" class="inline">
+                            {% csrf_token %}
+                            <button 
+                                onclick="return confirm('Logout from the system?')"
+                                class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
+                                Logout
+                            </button>
+                        </form>
+                    {% else %}
+                        <a href="/login/" 
+                            class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
+                            Login
+                        </a>
+                    {% endif %}
+                </div>
+
+            </div>
+        </nav>
+
+        <!--messages-->
+        {% if messages %}
+            <div class="max-w-6xl mx-auto px-4 mt-4">
+                {% for message in messages %}
+                    <div class="flash-message mb-3 p-3 rounded
+                        {% if message.tags == 'success' %}bg-green-100 text-green-800
+                        {% elif message.tags == 'error' %}bg-red-100 text-red-800
+                        {% elif message.tags == 'warning' %}bg-yellow-100 text-yellow-800
+                        {% else %}bg-blue-100 text-blue-800
+                        {% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        <script>
+            setTimeout(() => {
+                document.querySelectorAll(".flash-message")
+                .forEach(el => el.style.display = "none");
+            }, 4000);
+        </script>
+
+        <!-- Page Content -->
+        <div class="max-w-6xl mx-auto px-4">
+            {% block content %} {% endblock %}
+        </div>
+
+    </body>
+</html>

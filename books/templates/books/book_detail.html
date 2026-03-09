@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="bg-white shadow-lg rounded-lg p-6">
+    <div class="flex items-center justify-between gap-3">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">
+            📖 Book Details
+        </h2>
+        <div class="flex items-center gap-2">
+            <a href="/books/" 
+            class="text-blue-500 hover:underline hover:underline-offset-4">
+            Back
+            </a>
+            
+            {% if request.user.groups.all.0.name == "Admin" or request.user.groups.all.0.name == "SuperAdmin" %}
+                <a href="/books/edit/{{ book.id }}/"
+                class="text-blue-500 hover:underline hover:underline-offset-4">
+                Edit
+                </a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="space-y-4">
+        <div>
+            <p class="text-gray-500 text-sm">Title</p>
+            <p class="text-lg font-semibold">{{ book.title }}</p>
+        </div>
+        <div>
+            <p class="text-gray-500 text-sm">Genre</p>
+            <p class="text-lg">{{ book.genre }}</p>
+        </div>
+        <div>
+            <p class="text-gray-500 text-sm">Price</p>
+            <p class="text-lg">${{ book.price }}</p>
+        </div>
+        <div>
+            <p class="text-gray-500 text-sm">Description</p>
+            <p class="text-gray-700">
+                {{ book.description|default:"No description available." }}
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

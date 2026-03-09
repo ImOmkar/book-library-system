@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="bg-white shadow-lg rounded-lg p-8">
+    <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">
+    🔎 Scrape Books by Category
+    </h2>
+
+    <form method="post" class="space-y-4">
+        {% csrf_token %}
+        <div>
+            <label class="block mb-2 text-gray-700 font-medium">
+                Select Category
+            </label>
+            <select 
+                name="category"
+                class="w-full border p-2 rounded-lg">
+                {% for category in categories %}
+                    <option value="{{ category }}">
+                        {{ category }}
+                    </option>
+                {% endfor %}
+
+            </select>
+        </div>
+        <button 
+            class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700"
+            onclick="this.innerText='Scraping...';">
+            Scrape Books
+        </button>
+    </form>
+    <div class="text-center mt-4">
+        <a 
+            href="/books/" 
+            class="text-blue-600 hover:underline hover:underline-offset-4">
+            Back to Books
+        </a>
+    </div>
+</div>
+
+{% endblock %}

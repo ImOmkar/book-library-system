@@ -1,0 +1,17 @@
+CATEGORIES = {
+    "travel": "travel_2",
+    "mystery": "mystery_3",
+    "historical-fiction": "historical-fiction_4",
+    "classics": "classics_6",
+    "philosophy": "philosophy_7",
+    "romance": "romance_8",
+    "science-fiction": "science-fiction_16",
+    "poetry": "poetry_19",
+    "music": "music_14",
+    "art": "art_25",
+    "fiction": "fiction_10",
+    "fantasy": "fantasy_19",
+    "horror": "horror_31",
+    "history": "history_32",
+    "biography": "biography_36",
+}

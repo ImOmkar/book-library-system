@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% block content %}
+
+<div class="bg-white shadow-lg rounded-lg p-8">
+    <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">
+        Add / Edit Book
+    </h2>
+
+    <form method="post" class="space-y-5">
+        {% csrf_token %}
+        <!--title field div-->
+        <div>
+            <label class="block mb-1 text-gray-700 font-medium">
+                Title
+            </label>
+            {% render_field form.title class="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" %}
+            {% if form.title.errors %}
+                <p class="text-red-500 text-sm mt-1">
+                {{ form.title.errors.0 }}
+            </p>
+            {% endif %}
+        </div>
+        <!-- Genre field dive -->
+        <div>
+            <label class="block mb-1 text-gray-700 font-medium">
+                Genre
+            </label>
+            {% render_field form.genre class="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" %}
+            {% if form.genre.errors %}
+                <p class="text-red-500 text-sm mt-1">
+                    {{ form.genre.errors.0 }}
+                </p>
+            {% endif %}
+        </div>
+        <!-- Price field div-->
+        <div>
+            <label class="block mb-1 text-gray-700 font-medium">
+                Price
+            </label>
+            {% render_field form.price class="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" %}
+            {% if form.price.errors %}
+                <p class="text-red-500 text-sm mt-1">
+                    {{ form.price.errors.0 }}
+                </p>
+            {% endif %}
+        </div>
+        <!-- Description field div-->
+        <div>
+            <label class="block mb-1 text-gray-700 font-medium">
+                Description
+            </label>
+            {% render_field form.description class="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" rows="3" %}
+            {% if form.description.errors %}
+                <p class="text-red-500 text-sm mt-1">
+                    {{ form.description.errors.0 }}
+                </p>
+            {% endif %}
+        </div>
+        <button
+            class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+            Save Book
+        </button>
+    </form>
+
+    <div class="text-center mt-4">
+        <a href="/books/" class="text-blue-600 hover:underline hover:underline-offset-4">
+        Back to Books
+    </a>
+</div>
+{% endblock %}
