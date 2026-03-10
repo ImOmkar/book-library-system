@@ -76,18 +76,19 @@ def scrape_books_view(request):
     if request.method == "POST":
         category = request.POST.get("category")
         slug = CATEGORIES.get(category)
-        try:
-            books = scrape_books(slug)
-            for book in books:
-                Book.objects.create(
-                    title=book["title"],
-                    genre=category,
-                    price=book["price"],
-                    description=book["description"]
-                )
-            messages.success(request, f"{len(books)} books scraped successfully!")
-        except Exception as e:
-            messages.error(request, f"Failed to scrap books for a {category} category")
+        # try:
+        books = scrape_books(slug)
+        for book in books:
+            Book.objects.create(
+                title=book["title"],
+                genre=category,
+                price=book["price"],
+                description=book["description"],
+                image_url=book["image_url"]
+            )
+        messages.success(request, f"{len(books)} books scraped successfully!")
+        # except Exception as e:
+            # messages.error(request, f"Failed to scrap books for a {category} category")
         return redirect("book_list")
     return render(request, "books/scrape.html", {"categories": CATEGORIES.keys()})
 

@@ -45,6 +45,7 @@
     <table class="w-full text-left">
         <thead class="bg-gray-200">
             <tr>
+                <th class="p-3 text-nowrap text-left">Image</th>
                 <th class="p-3 text-nowrap text-left">Title</th>
                 <th class="p-3 text-nowrap text-left">Genre</th>
                 <th class="p-3 text-nowrap text-left">Price</th>
@@ -54,6 +55,9 @@
         <tbody>
             {% for book in books %}
                 <tr class="border-b hover:bg-gray-50">
+                    <td class="p-3">
+                        <img src="{{ book.image_url }}" class="w-16 h-20 object-cover rounded">
+                    </td>
                     <td class="p-3 font-medium max-w-xs truncate text-nowrap" title="{{ book.title }}">
                         {{ book.title }}
                     </td>
