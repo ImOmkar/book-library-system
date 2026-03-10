@@ -54,18 +54,18 @@
         <tbody>
             {% for book in books %}
                 <tr class="border-b hover:bg-gray-50">
-                    <td class="p-3 font-medium max-w-xs truncate" title="{{ book.title }}">
+                    <td class="p-3 font-medium max-w-xs truncate text-nowrap" title="{{ book.title }}">
                         {{ book.title }}
                     </td>
-                    <td class="capitalize ">
+                    <td class="capitalize text-nowrap">
                         <span class="bg-blue-100 px-5 py-1 rounded-2xl text-blue-700 border border-blue-500">{{ book.genre }}</span>
                     </td>
-                    <td class="p-3">
+                    <td class="p-3 text-nowrap">
                         <span class="bg-green-100 px-5 py-1 rounded-2xl text-green-700 border border-green-500">
                             £{{ book.price }}
                         </span>
                     </td>
-                    <td class="p-3 flex items-center gap-2">
+                    <td class="p-3 flex items-center gap-2 text-nowrap">
                         <a href="/books/{{ book.id }}/"
                             class="text-blue-600 text-sm hover:underline hover:underline-offset-4 font-semibold">
                             View

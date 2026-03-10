@@ -111,29 +111,4 @@ Run tests using:
 pytest
 ```
 
-# Project Structure
-
-book-library-system
-│
-├ requirements.txt
-├ README.md
-├ pytest.ini
-│
-└ library_project
-├ manage.py
-│
-├ books
-│ ├ models.py
-│ ├ views.py
-│ ├ forms.py
-│ ├ scraping.py
-│ ├ constants.py
-│ ├ tests.py
-│ └ templates/books
-│
-└ library_project
-├ settings.py
-└ urls.py
-
-
 
